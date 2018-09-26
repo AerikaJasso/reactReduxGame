@@ -6,9 +6,9 @@ import { setAuthedUser } from '../actions/authedUser'
 const AUTHED_ID = 'sarahedo'
 //todo: set up authentication replacing string.
 
-
+// thunk action creator
 export function handleInitialData () {
-  // use redux thunk pattern
+  // use redux async thunk pattern to make API req
   return (dispatch) => {
     return getInitialData()
       .then(({ users, questions }) => {
