@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../styles/App.css'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import Login from './Login'
 
 class App extends Component {
   // When app mounts we want to dispatch the action creator
@@ -11,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <h1 className="">IM TIRED!</h1>
+       <Login />
       </div>
     );
   }
