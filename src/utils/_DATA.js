@@ -200,3 +200,13 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
     }, 500)
   })
 }
+
+function formatUser({ name, avatar }) {
+  return {
+    name,
+    id: generateUID(),
+    avatarURL: avatar,
+    answers: {},
+    questions: {}
+  }
+}
