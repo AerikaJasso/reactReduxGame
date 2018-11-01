@@ -60,7 +60,7 @@ ls
               type='submit'
               disabled={name === '' || avatar === ''}
             >
-              Submit
+              Join
             </button>
           </form>
         </div>

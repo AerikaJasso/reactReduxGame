@@ -3,6 +3,7 @@ import '../styles/App.css'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import Login  from './Login'
+import JoinForm from './JoinForm'
 
 class App extends Component {
   // When app mounts we want to dispatch the action creator
@@ -12,7 +13,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <Login />
+       {/* <Login /> */}
+       <JoinForm/>
+
       </div>
     );
   }
