@@ -26,6 +26,7 @@ class LoginForm extends Component {
     const { userId } = this.state
     return(
       <div className='login'>
+      <h1 className='login-header'>Login</h1>
         <form 
           className='login-form' 
           onSubmit={this.handleLogin}

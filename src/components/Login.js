@@ -1,17 +1,18 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LoginForm from './LoginForm'
+import JoinForm from './JoinForm'
 
 //What info do we want to pass from the store to component?
 class Login extends Component {
   render() {
     const {userList} = this.props
     return (
-      <div className='login-container'>
-        <h1>Login</h1>  
-          <LoginForm
+      <div className='login-container'> 
+          {/* <LoginForm
             userList={userList}
-          />    
+          />     */}
+          <JoinForm/>
       </div>
     )
   }

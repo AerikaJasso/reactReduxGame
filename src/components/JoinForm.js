@@ -47,7 +47,7 @@ ls
               onChange={this.handleChange}
               maxLength={100}
               />
-            <label>AvatarUrl:</label>
+            <label>Avatar:</label>
             <input 
               type="text" 
               name='avatar'
