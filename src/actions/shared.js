@@ -11,11 +11,13 @@ import { showLoading, hideLoading } from 'react-redux-loading'
 export function handleInitialData () {
   // use redux async thunk pattern to make API req
   return (dispatch) => {
+    dispatch(showLoading())
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(receiveUsers(users))
         // dispatch(receiveQuestions(questions))
         // dispatch(setAuthedUser(AUTHED_ID))
+        dispatch(hideLoading())
         // sending the dispatches to the reducers to handle them.
       })
   }

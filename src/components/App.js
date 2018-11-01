@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import '../styles/App.css'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
+import LoadingBar from 'react-redux-loading'
 import Login  from './Login'
 import JoinForm from './JoinForm'
 
