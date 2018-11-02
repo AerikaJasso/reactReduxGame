@@ -210,3 +210,20 @@ function formatUser({ name, avatar }) {
     questions: {}
   }
 }
+
+export function _saveUser({ name, avatar }) {
+  return new Promise((res, rej) => {
+    const formattedUser = formatUser({
+      name,
+      avatar
+    })
+
+    setTimeout(() => {
+      users = {
+        ...users,
+        [formattedUser.id]: formattedUser
+      }
+    res(formattedUser)
+    }, 500)
+  })
+}

@@ -1,11 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { handleAddUser } from '../actions/users'
 
-class JoinForm extends Component {
+class NewUser extends Component {
   state = {
     name: '',
-    avatar: ''
+    avatar: '',
+    userExist: false
   }
+
+  duplicateUser = (checkName) => {
+    const users = this.props.users;
+    // todo: Find Duplicate User
+    for( let user of users) {
+      if(user.name.toUpperCase() === checkName.toUpperCase()) {
+        return true
+      } else { 
+        return false
+      }
+    }
+  }
+
+
   handleChange = (e) => {
     const inputName = e.target.name
     const value = e.target.value
@@ -19,20 +35,30 @@ class JoinForm extends Component {
     e.preventDefault()
 
     const { name, avatar } = this.state
+    const { dispatch } = this.props 
+    // check if name is duplicate
+    const isNameDuplicate = this.duplicateUser(name)
 
-    // todo: Add User to Store
-    console.log('This is the name in the JoinForm: ', name, 'This is the avatarLink', avatar)
-
-    this.setState(() => ({
-      name: '',
-      avatar: ''
-    }))
+    if(isNameDuplicate) {
+      this.setState(() => {
+        return {
+          userExist: isNameDuplicate
+        }
+      })
+    } else {
+      //  todo: Add User to Store
+      dispatch(handleAddUser(name, avatar)) 
+        this.setState(() => ({
+          name: '',
+          avatar: ''
+        }))
+    }
+   
   }
-ls
-
   render(){
     const {name, avatar} = this.state
-
+    const {users} = this.props
+    console.log("USERS:", users);
     // todo: Redirect to / if submitted
     return(
       <div className='form-container'>
@@ -45,7 +71,7 @@ ls
               value={name}
               name='name'
               onChange={this.handleChange}
-              maxLength={100}
+              maxLength={50}
               />
             <label>AvatarUrl:</label>
             <input 
@@ -53,7 +79,7 @@ ls
               name='avatar'
               value={avatar} 
               onChange={this.handleChange}
-              maxLength={100}
+              maxLength={50}
               />
             <button
               className='btn'
@@ -68,4 +94,4 @@ ls
     )
   }
 }
-export default JoinForm
+export default connect()(NewUser)

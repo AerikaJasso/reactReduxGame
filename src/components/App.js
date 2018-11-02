@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Login  from './Login'
-import JoinForm from './JoinForm'
+
 
 class App extends Component {
   // When app mounts we want to dispatch the action creator
@@ -15,9 +15,7 @@ class App extends Component {
     return (
       <div className="App">
       <LoadingBar />
-       {/* <Login /> */}
-       <JoinForm/>
-
+       <Login />
       </div>
     );
   }

@@ -22,10 +22,11 @@ class LoginForm extends Component {
   render() {
     
     console.log("PROPS IN LOGINFORM: ", this.props, "State In LoginForm: ", this.state )
-    const { userList } = this.props
+    const { users } = this.props
     const { userId } = this.state
     return(
       <div className='login'>
+      <h1 className='Login-header'>Login</h1> 
         <form 
           className='login-form' 
           onSubmit={this.handleLogin}
@@ -35,7 +36,7 @@ class LoginForm extends Component {
             <select 
               onChange={this.handleChange}
             >
-            { userList.map((user) => (
+            { users.map((user) => (
               <option
                 key={user.id} 
                 value={user.id}
