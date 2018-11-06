@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Button from '@material-ui/core/Button';
 import { handleAddUser } from '../actions/users'
-
+import axios from 'axios'
 class NewUser extends Component {
   state = {
     name: '',
@@ -63,6 +64,8 @@ class NewUser extends Component {
     return(
       <div className='form-container'>
         <div className='sign-up-form'>
+        {/* ToDo: Display generated avatar after sign up. */}
+        {/* Create Avatar component */}
           <h1 className='center'>Join</h1>
           <form className='new-user' onSubmit={this.handleSubmit}>
             <label>Name:</label>
@@ -73,14 +76,14 @@ class NewUser extends Component {
               onChange={this.handleChange}
               maxLength={50}
               />
-            <label>AvatarUrl:</label>
+            {/* <label>AvatarUrl:</label>
             <input 
-              type="text" 
+              type="file" 
               name='avatar'
               value={avatar} 
               onChange={this.handleChange}
               maxLength={50}
-              />
+              /> */}
             <button
               className='btn'
               type='submit'
