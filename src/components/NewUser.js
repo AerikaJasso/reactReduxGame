@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import { handleAddUser } from '../actions/users'
 import axios from 'axios'
+import  Avatar  from './Avatar'
 class NewUser extends Component {
   state = {
     name: '',
@@ -24,11 +25,12 @@ class NewUser extends Component {
 
 
   handleChange = (e) => {
-    const inputName = e.target.name
-    const value = e.target.value
+    const avatarURL = 'https://api.adorable.io/avatars/125/'
+    const name = e.target.value
     
     this.setState(() => ({
-      [inputName]: value 
+      name,
+      avatar: avatarURL+name+'.png'
     }))
   }
 
@@ -67,6 +69,11 @@ class NewUser extends Component {
         {/* ToDo: Display generated avatar after sign up. */}
         {/* Create Avatar component */}
           <h1 className='center'>Join</h1>
+          {name && (
+            <Avatar
+              avatar={avatar}
+            />
+          )}
           <form className='new-user' onSubmit={this.handleSubmit}>
             <label>Name:</label>
             <input 
@@ -76,18 +83,10 @@ class NewUser extends Component {
               onChange={this.handleChange}
               maxLength={50}
               />
-            {/* <label>AvatarUrl:</label>
-            <input 
-              type="file" 
-              name='avatar'
-              value={avatar} 
-              onChange={this.handleChange}
-              maxLength={50}
-              /> */}
             <button
               className='btn'
               type='submit'
-              disabled={name === '' || avatar === ''}
+              disabled={name === ''}
             >
               Join
             </button>
