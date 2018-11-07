@@ -21,6 +21,7 @@ export function handleAddUser (name, avatar) {
     })
     .then((user) => dispatch(addUser(user)))
     .then(() => dispatch(hideLoading))
+    //ToDo:  connect authedUserAction
   }
 }
 export function receiveUsers (users) {

@@ -32,11 +32,12 @@ class LoginForm extends Component {
     }))
   }
 
-  // handleLogin = (e) => {
-  //   e.preventDefault()
-  //   const {user} = this.state
-  //   console.log("THIS IS THE USER STAE ON CLICK: ", user);
-  // }
+  handleLogin = (e) => {
+    e.preventDefault()
+    const {id} = this.state
+    //ToDo:  connect authedUserAction
+    
+  }
   render() {
     const { users } = this.props
     const {clicked, avatarURL} = this.state
