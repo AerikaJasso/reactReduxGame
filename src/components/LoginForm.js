@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Avatar from './Avatar'
-
-
 class LoginForm extends Component {
   state = {
     id:'',
@@ -19,9 +17,7 @@ class LoginForm extends Component {
     this.setState(() => ({
        avatarURL
     }))
-  }
-
- 
+  } 
   handleClick= (e) => {
     e.preventDefault()
     const userIndex = e.target.value
@@ -43,7 +39,7 @@ class LoginForm extends Component {
   // }
   render() {
     const { users } = this.props
-    const {clicked, name, avatarURL} = this.state
+    const {clicked, avatarURL} = this.state
   
     console.log('The users props: ', users)
     console.log('THE STATE:', this.state)
