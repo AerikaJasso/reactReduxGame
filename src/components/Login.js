@@ -6,16 +6,18 @@ import NewUser from './NewUser'
 
 //What info do we want to pass from the store to component?
 class Login extends Component {
+  
   render() {
     const {users} = this.props
     return (
       <div className='login-container'> 
-          {/* <LoginForm
+        
+          <LoginForm
             users={users}
-          />  */}
-          <NewUser
+          /> 
+          {/* <NewUser
             users={users}
-          />   
+          />    */}
       </div>
     )
   }

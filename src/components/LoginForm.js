@@ -1,48 +1,79 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Avatar from './Avatar'
 
 
 class LoginForm extends Component {
-
   state = {
-    userId:''
+    id:'',
+    name: '',
+    avatarURL: '',
+    clicked:false
   }
 
-  handleChange = (e) => {
-    const userId = e.target.value
+  handleChange= (e) => {
+    const userIndex = e.target.value
+    let userObj = this.props.users[userIndex]
+    let { avatarURL } = userObj
+    
     this.setState(() => ({
-      userId
+       avatarURL
     }))
   }
 
-  handleLogin = (e) => {
+ 
+  handleClick= (e) => {
     e.preventDefault()
-    const {userId} = this.state
-  }
-  render() {
+    const userIndex = e.target.value
+    let userObj = this.props.users[userIndex]
+    let { id, name, avatarURL } = userObj;
     
-    console.log("PROPS IN LOGINFORM: ", this.props, "State In LoginForm: ", this.state )
+    this.setState(() => ({
+      id,
+      name,
+      avatarURL,
+      clicked: true
+    }))
+  }
+
+  // handleLogin = (e) => {
+  //   e.preventDefault()
+  //   const {user} = this.state
+  //   console.log("THIS IS THE USER STAE ON CLICK: ", user);
+  // }
+  render() {
     const { users } = this.props
-    const { userId } = this.state
+    const {clicked, name, avatarURL} = this.state
+  
+    console.log('The users props: ', users)
+    console.log('THE STATE:', this.state)
+    // const {user} = this.state
     return(
       <div className='login'>
       <h1 className='Login-header'>Login</h1>
-       
-        <form 
+       { clicked ?
+        <Avatar
+          avatar={avatarURL}
+        /> 
+        : null
+       } 
+         <form 
           className='login-form' 
           onSubmit={this.handleLogin}
         >
+          
           <label>
             Please select your name: 
             <select 
+              onClick={this.handleClick}
               onChange={this.handleChange}
             >
-            { users.map((user) => (
+            { users.map((user, index) => (
               <option
-                key={user.id} 
-                value={user.id}
+                key={index} 
+                value={index}
               >
-                {user.name}
+              {user.name}
               </option>
             ))}
             </select>
@@ -54,7 +85,7 @@ class LoginForm extends Component {
             Enter
           </button>
         
-        </form>
+        </form> 
       </div>
     )
   }

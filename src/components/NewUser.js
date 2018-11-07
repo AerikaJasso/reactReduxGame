@@ -2,12 +2,11 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import { handleAddUser } from '../actions/users'
-import axios from 'axios'
 import  Avatar  from './Avatar'
 class NewUser extends Component {
   state = {
     name: '',
-    avatar: '',
+    avatarURL: '',
     userExist: false
   }
 
@@ -30,7 +29,7 @@ class NewUser extends Component {
     
     this.setState(() => ({
       name,
-      avatar: avatarURL+name+'.png'
+      avatarURL: avatarURL+name+'.png'
     }))
   }
 
@@ -53,25 +52,23 @@ class NewUser extends Component {
       dispatch(handleAddUser(name, avatar)) 
         this.setState(() => ({
           name: '',
-          avatar: ''
+          avatarURL: ''
         }))
     }
    
   }
   render(){
-    const {name, avatar} = this.state
+    const {name, avatarURL} = this.state
     const {users} = this.props
     console.log("USERS:", users);
     // todo: Redirect to / if submitted
     return(
       <div className='form-container'>
         <div className='sign-up-form'>
-        {/* ToDo: Display generated avatar after sign up. */}
-        {/* Create Avatar component */}
           <h1 className='center'>Join</h1>
           {name && (
             <Avatar
-              avatar={avatar}
+              avatar={avatarURL}
             />
           )}
           <form className='new-user' onSubmit={this.handleSubmit}>
