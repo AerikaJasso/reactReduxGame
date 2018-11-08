@@ -12,8 +12,8 @@ export function getInitialData () {
     _getUsers(),
     _getQuestions()
   ]).then(([users, questions]) => ({
-    users
-    // questions
+    users,
+    questions
   }))
 }
 export function saveUser (info) {

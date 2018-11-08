@@ -1,9 +1,10 @@
 import { getInitialData } from '../utils/api'
 import { receiveUsers } from '../actions/users'
+import { receiveQuestions } from '../actions/questions'
+import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
 
-// const AUTHED_ID = 'sarahedo'
-//todo: set up authentication replacing string.
+const AUTHED_ID = null
 
 // thunk action creator
 export function handleInitialData () {
@@ -13,7 +14,8 @@ export function handleInitialData () {
     return getInitialData()
       .then(({ users, questions }) => {
         dispatch(receiveUsers(users))
-        // dispatch(setAuthedUser(AUTHED_ID))
+        dispatch(receiveQuestions(questions))
+        dispatch(setAuthedUser(AUTHED_ID))
         dispatch(hideLoading())
         // sending the dispatches to the reducers to handle them.
       })

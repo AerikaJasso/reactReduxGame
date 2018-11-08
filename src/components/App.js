@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Login  from './Login'
+import Home from './Home'
 
 
 class App extends Component {
@@ -22,7 +23,8 @@ class App extends Component {
         
           <div className="App">
             <LoadingBar />
-            <Login />
+            {/* <Login /> */}
+            <Home />
           </div>
        
       </React.Fragment>
