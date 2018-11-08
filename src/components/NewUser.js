@@ -7,7 +7,8 @@ class NewUser extends Component {
   state = {
     name: '',
     avatarURL: '',
-    userExist: false
+    userExist: false,
+    toDashboard: false
   }
 
   duplicateUser = (checkName) => {
@@ -36,9 +37,8 @@ class NewUser extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
 
-    const { name, avatar } = this.state
+    const { name, avatarURL } = this.state
     const { dispatch } = this.props 
-    // check if name is duplicate
     const isNameDuplicate = this.duplicateUser(name)
 
     if(isNameDuplicate) {
@@ -48,8 +48,7 @@ class NewUser extends Component {
         }
       })
     } else {
-      //  todo: Add User to Store
-      dispatch(handleAddUser(name, avatar)) 
+      dispatch(handleAddUser(name, avatarURL))
         this.setState(() => ({
           name: '',
           avatarURL: ''

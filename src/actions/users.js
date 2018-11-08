@@ -1,5 +1,7 @@
 import { saveUser } from '../utils/api'
+import {  setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { generateUID } from '../utils/_DATA.js'
 
 export const RECEIVE_USERS = 'RECEIVE_USERS'
 export const ADD_USER = 'ADD_USER'
@@ -11,17 +13,17 @@ function addUser (user) {
   }
 }
 
-export function handleAddUser (name, avatar) {
+export function handleAddUser (name, avatarURL) {
   return (dispatch) => {
-    dispatch(showLoading())
-
+    // dispatch(showLoading())
+    const id = generateUID()
     return saveUser({
       name,
-      avatar
+      avatarURL,
+      id
     })
     .then((user) => dispatch(addUser(user)))
-    .then(() => dispatch(hideLoading))
-    //ToDo:  connect authedUserAction
+    .then(()=> dispatch(setAuthedUser(id)))
   }
 }
 export function receiveUsers (users) {

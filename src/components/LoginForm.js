@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Avatar from './Avatar'
+import { handleSetAuthedUser } from '../actions/authedUser'
 class LoginForm extends Component {
   state = {
     id:'',
     name: '',
     avatarURL: '',
-    clicked:false
+    clicked:false,
+    toDashboard: false
   }
 
   handleChange= (e) => {
@@ -35,11 +37,11 @@ class LoginForm extends Component {
   handleLogin = (e) => {
     e.preventDefault()
     const {id} = this.state
-    //ToDo:  connect authedUserAction
-    
+    const { dispatch } = this.props
+    dispatch(handleSetAuthedUser(id))
   }
   render() {
-    const { users } = this.props
+    const { users  } = this.props
     const {clicked, avatarURL} = this.state
   
     console.log('The users props: ', users)

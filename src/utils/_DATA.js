@@ -115,7 +115,7 @@ let questions = {
   },
 }
 
-function generateUID () {
+export function generateUID () {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
 
@@ -201,21 +201,22 @@ export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
   })
 }
 
-function formatUser({ name, avatar }) {
+function formatUser({ name, avatarURL, id }) {
   return {
     name,
-    id: generateUID(),
-    avatarURL: avatar,
+    id,
+    avatarURL,
     answers: {},
     questions: {}
   }
 }
 
-export function _saveUser({ name, avatar }) {
+export function _saveUser({ name, avatarURL, id }) {
   return new Promise((res, rej) => {
     const formattedUser = formatUser({
       name,
-      avatar
+      avatarURL,
+      id
     })
 
     setTimeout(() => {
