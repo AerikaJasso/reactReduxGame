@@ -68,6 +68,7 @@ class NewUser extends Component {
           {name && (
             <Avatar
               avatar={avatarURL}
+              name={name}
             />
           )}
           <form className='new-user' onSubmit={this.handleSubmit}>

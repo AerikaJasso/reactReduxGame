@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import '../styles/home.css'
+import Question from './Question' 
 
 class Home extends Component {
 
@@ -10,7 +12,7 @@ class Home extends Component {
         <ul className='questions-list'>
           {this.props.questionIds.map((id) =>(
             <li key={id}>
-              <div>QUESTIONS ID: {id}</div>
+              <Question id={id}/>
             </li>
           ))}
         </ul>

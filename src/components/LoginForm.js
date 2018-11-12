@@ -42,7 +42,7 @@ class LoginForm extends Component {
   }
   render() {
     const { users  } = this.props
-    const {clicked, avatarURL} = this.state
+    const {clicked, avatarURL, name} = this.state
   
     console.log('The users props: ', users)
     console.log('THE STATE:', this.state)
@@ -53,6 +53,7 @@ class LoginForm extends Component {
        { clicked ?
         <Avatar
           avatar={avatarURL}
+          name={name}
         /> 
         : null
        } 
