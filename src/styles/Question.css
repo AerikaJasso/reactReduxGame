@@ -1,0 +1,31 @@
+
+.question-card{
+  width: 100%;
+  max-width: 540px;
+  padding: 0;
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  flex-direction: column;
+}
+
+.card-header{
+  border-bottom: 1px solid #dad7d7;
+}
+
+.card-main{
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0 10px 25px;
+}
+
+.question-info{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+}
+
+h4{
+  margin: 10px 0 10px 25px;
+}

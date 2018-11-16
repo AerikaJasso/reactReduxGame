@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate } from '../utils/helpers'
 import { TiStarburst } from 'react-icons/ti'
-import Button from '@material-ui/core/Button';
 import Avatar from './Avatar'
+import '../styles/Question.css'
 
 class Question extends Component {
   handleClick = (e) => {
@@ -13,37 +13,47 @@ class Question extends Component {
   render() {
     const { question } = this.props
     console.log('THESE ARE THE PROPS IN QUESTION: ', this.props)
-    console.log('THIS IS THE QUESTION: ', question)
+    // console.log('THIS IS Question Option 1 votes: ', question.optionOne.votes.length)
 
     if(question === null){
       return <p>This Question Doesn't Exist</p>
     }
 
     const {
-      name, avatarURL, id, timestamp
+      name, avatarURL, id, timestamp, optionOne, OptionTwo, hasVoted
     } = question
     
     return(
       <div className='question-container'>
-        <div className="question">
-        {/* Todo: Add styling for avatar globally with Material */}
-          <div className="avatar">
-            <Avatar
-              avatar={avatarURL}
-              name={name}
-            />
-          </div>
+        <div className="question-card">
+         <div className="card-header">
+          <h4>
+            {name} Asks : 
+            </h4>
+         </div>
+         
+          
+            <div className="card-main">
+              <Avatar
+                className='avatar'
+                avatar={avatarURL}
+                name={name}
+              />
+            
 
-          <div className="question-info">
-            <span>{name}</span>
-            <div>{formatDate(timestamp)}</div>
-            <blockquote>
-              Would you rather . . .
-            </blockquote>
-            <Button onClick={this.handleClick}>
-              View Poll
-            </Button>
-          </div>
+              <div className="question-info">
+                {/* <div>{formatDate(timestamp)}</div> */}
+                <p>
+                  Would you rather ...
+                </p>
+              
+
+                <button onClick={this.handleClick}>
+                View Poll
+                </button>
+              </div>
+            </div>
+          
         </div>
       </div>
     )
