@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Login  from './Login'
 import Home from './Home'
+import Navbar from './Navbar'
 
 
 class App extends Component {
@@ -13,21 +15,30 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
   render() {
+    const { authedUser } = this.props
     return (
-      <React.Fragment>
-        <CssBaseline />
+      <Router>
+        <React.Fragment>
+          <CssBaseline />
+            <div className="app-container">
+              <Navbar id={authedUser} />
+              <LoadingBar/>
+                <Route path='/login' exact component={Login}/>
+                <Route path='/' exact component={Home}/>   
+                  
+              {/* <Login /> */}
+              {/* <Home /> */}
+            </div>
         
-          <div className="app-container">
-            <LoadingBar />
-            {/* <Login /> */}
-            <Home />
-          </div>
-       
-      </React.Fragment>
+        </React.Fragment>
+      </Router>
     );
   }
 }
-/* 
-  we dont need anything from state, the connect invocation can remain blank.
-*/
-export default connect()(App);
+function mapStateToProps ({ authedUser }) {
+  return {
+    // loading: authedUser === null
+    authedUser: authedUser
+  }
+}
+export default connect(mapStateToProps)(App);

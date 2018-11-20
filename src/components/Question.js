@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate } from '../utils/helpers'
 import { TiStarburst } from 'react-icons/ti'
-import Avatar from './Avatar'
 import '../styles/Question.css'
+import ImageAvatars from './ImageAvatars';
 
 class Question extends Component {
   handleClick = (e) => {
@@ -34,9 +34,9 @@ class Question extends Component {
          
           
             <div className="card-main">
-              <Avatar
+              <ImageAvatars
                 className='avatar'
-                avatar={avatarURL}
+                avatarURL={avatarURL}
                 name={name}
               />
             

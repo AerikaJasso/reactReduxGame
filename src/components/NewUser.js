@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import { handleAddUser } from '../actions/users'
-import  Avatar  from './Avatar'
+import ImageAvatars from './ImageAvatars';
 class NewUser extends Component {
   state = {
     name: '',
@@ -66,8 +66,8 @@ class NewUser extends Component {
         <div className='sign-up-form'>
           <h1 className='center'>Join</h1>
           {name && (
-            <Avatar
-              avatar={avatarURL}
+            <ImageAvatars
+              avatarURL={avatarURL}
               name={name}
             />
           )}

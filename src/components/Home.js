@@ -3,11 +3,19 @@ import { connect } from 'react-redux'
 import '../styles/Home.css'
 import '../styles/Container.css'
 import Question from './Question'
+import Navbar from './Navbar'
 
 class Home extends Component {
   
   state = {
     answered: false
+  }
+
+  toggleList = (e) => {
+    e.preventDefault();
+    this.setState((prevState) => ({
+      answered: !prevState.answered
+    }))
   }
   
   render() {
@@ -17,9 +25,9 @@ class Home extends Component {
         <nav className="nav">
           <ul>
           
-            <li className={answered ? 'color': null }>Answered</li>
+            <li onClick={this.toggleList} className={answered ? 'color': null }>Answered</li>
           
-            <li className={!answered ? 'color': null }>Unanswered</li>
+            <li onClick={this.toggleList} className={!answered ? 'color': null }>Unanswered</li>
     
           </ul>
         </nav>

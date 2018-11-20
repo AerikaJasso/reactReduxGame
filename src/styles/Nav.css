@@ -1,0 +1,7 @@
+.nav-toolbar{
+  display: flex;
+  flex-flow: row nowrap;
+  border: 10px solid black;
+  margin: 0;
+  padding: 0;
+}

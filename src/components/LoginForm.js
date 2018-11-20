@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Avatar from './Avatar'
+import ImageAvatars from './ImageAvatars'
 import { handleSetAuthedUser } from '../actions/authedUser'
 class LoginForm extends Component {
   state = {
@@ -51,8 +51,8 @@ class LoginForm extends Component {
       <div className='login'>
       <h1 className='Login-header'>Login</h1>
        { clicked ?
-        <Avatar
-          avatar={avatarURL}
+        <ImageAvatars
+          avatarURL={avatarURL}
           name={name}
         /> 
         : null
