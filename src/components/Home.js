@@ -35,12 +35,16 @@ class Home extends Component {
           { answered ? 
             this.props.answeredQuestions.map((id) => (
             <li key={id}>
-              <Question id={id}/>
+              <Question 
+                id={id}
+                />
             </li> 
           )) : 
           this.props.unansweredQuestions.map((id) => (
             <li key={id}>
-              <Question id={id}/>
+              <Question 
+                id={id}
+                />
             </li>
             ))
           }

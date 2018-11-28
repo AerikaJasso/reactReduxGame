@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { connect } from 'react-redux'
@@ -7,6 +7,7 @@ import LoadingBar from 'react-redux-loading'
 import Login  from './Login'
 import Home from './Home'
 import Navbar from './Navbar'
+import Poll from './Poll'
 
 
 class App extends Component {
@@ -24,8 +25,9 @@ class App extends Component {
               <Navbar id={authedUser} />
               <LoadingBar/>
                 <Route path='/login' exact component={Login}/>
-                <Route path='/' exact component={Home}/>   
-                  
+                <Route path='/' exact component={Home}/>
+                <Route path='/question/:id' component={Poll}/>     
+                
               {/* <Login /> */}
               {/* <Home /> */}
             </div>
